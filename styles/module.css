@@ -1,0 +1,48 @@
+.dlpe-silence-range .form-fields {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dlpe-silence-range .dlpe-label {
+  font-size: var(--font-size-11);
+  color: var(--color-text-light-6);
+  flex: 0 0 auto;
+}
+
+.dlpe-silence-range input[type="number"] {
+  width: 4rem;
+  text-align: center;
+}
+
+.dlpe-silence-range .dlpe-units {
+  font-size: var(--font-size-11);
+  color: var(--color-text-light-6);
+  flex: 0 0 auto;
+}
+
+/* Silence indicator in playlist sidebar */
+.dlpe-silence-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--font-size-12);
+  color: var(--color-text-light-6);
+  font-style: italic;
+  animation: dlpe-pulse 2s ease-in-out infinite;
+}
+
+.dlpe-silence-indicator i {
+  animation: dlpe-icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dlpe-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes dlpe-icon-pulse {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}

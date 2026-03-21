@@ -1,0 +1,9 @@
+{
+  "DLPLAYLIST": {
+    "SilenceBetweenTracks": "Silence Between Tracks",
+    "Min": "Min",
+    "Max": "Max",
+    "Seconds": "sec",
+    "WaitingForNext": "Next track shortly\u2026"
+  }
+}
