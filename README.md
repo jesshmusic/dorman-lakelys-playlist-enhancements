@@ -2,6 +2,8 @@
 
 Add natural silence between tracks in your FoundryVTT playlists for a more immersive audio experience.
 
+![Playlist Configuration](docs/playlist-config.png)
+
 ## What Does This Module Do?
 
 When playing a playlist in Sequential or Shuffle mode, FoundryVTT immediately starts the next track as soon as the current one ends. This module lets you configure a silence gap between tracks, with a randomized duration for a more natural feel.

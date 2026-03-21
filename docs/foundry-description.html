@@ -1,0 +1,43 @@
+<p>Add natural silence between tracks in your FoundryVTT playlists for a more immersive audio experience.</p>
+
+<img src="https://raw.githubusercontent.com/jesshmusic/dorman-lakelys-playlist-enhancements/main/docs/playlist-config.png" alt="Playlist Configuration Screenshot" style="max-width: 480px;" />
+
+<h2>What Does This Module Do?</h2>
+
+<p>When playing a playlist in Sequential or Shuffle mode, FoundryVTT immediately starts the next track as soon as the current one ends. This module lets you configure a silence gap between tracks, with a randomized duration for a more natural feel.</p>
+
+<h2>Key Features</h2>
+
+<ul>
+  <li><strong>Configurable silence range</strong> &mdash; Set a minimum and maximum silence duration (in seconds) between tracks</li>
+  <li><strong>Per-playlist settings</strong> &mdash; Each playlist can have its own silence configuration</li>
+  <li><strong>Randomized gaps</strong> &mdash; Silence duration is randomized within your range for natural transitions</li>
+  <li><strong>Works with Sequential and Shuffle modes</strong> &mdash; Automatically skipped for Simultaneous playback</li>
+  <li><strong>Compatible with Monk's Sound Enhancements</strong> &mdash; Works alongside other playlist modules</li>
+</ul>
+
+<h2>Requirements</h2>
+
+<ul>
+  <li>FoundryVTT v13 or higher</li>
+</ul>
+
+<h2>Usage</h2>
+
+<ol>
+  <li>Open any playlist's configuration (click the edit icon)</li>
+  <li>Below the <strong>Fade Duration</strong> field, you'll see <strong>Silence Between Tracks</strong> with Min and Max inputs</li>
+  <li>Set your desired range in seconds (e.g., Min: 2, Max: 5)</li>
+  <li>Click <strong>Update Playlist</strong></li>
+</ol>
+
+<p>When the playlist plays, each track transition will pause for a random duration within your configured range before starting the next track.</p>
+
+<p>Setting both values to 0 (the default) disables the feature and uses normal Foundry behavior.</p>
+
+<h2>Support</h2>
+
+<ul>
+  <li><strong>Issues &amp; Bugs:</strong> <a href="https://github.com/jesshmusic/dorman-lakelys-playlist-enhancements/issues">GitHub Issues</a></li>
+  <li><strong>Support Development:</strong> <a href="https://patreon.com/dormanlakely">Patreon</a></li>
+</ul>
