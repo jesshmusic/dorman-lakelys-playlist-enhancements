@@ -84,7 +84,7 @@ Hooks.once('init', () => {
   // may be removed or shimmed in future Foundry releases).
   const PlaylistClass = CONFIG.Playlist?.documentClass ?? globalThis.Playlist;
 
-  // Wrap Playlist.prototype._onSoundEnd to add silence between tracks
+  // Wrap PlaylistClass.prototype._onSoundEnd to add silence between tracks
   const originalOnSoundEnd = PlaylistClass.prototype._onSoundEnd;
   PlaylistClass.prototype._onSoundEnd = async function(sound) {
     const MODES = foundry.CONST?.PLAYLIST_MODES ?? CONST.PLAYLIST_MODES;
