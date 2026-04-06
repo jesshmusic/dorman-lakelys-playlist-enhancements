@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [1.0.2] - 2026-04-06
 
 ### Changed
-- Foundry VTT v14 compatibility: bumped `compatibility.verified` to `14`, removed `maximum` cap.
+- Foundry VTT v14 compatibility: bumped `compatibility.verified` to `14`, removed `maximum` cap. **Minimum Foundry version bumped to `14`** — earlier versions of this module remain available for v13 users from the GitHub releases page; this version is v14-only by design.
 - Resolve the Playlist document class via `CONFIG.Playlist.documentClass` instead of the bare `Playlist` global, and read playlist mode constants via `foundry.CONST.PLAYLIST_MODES` (with fallback). No behavior change in v13.
 
 ## [1.0.1] - 2026-03-21
