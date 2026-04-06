@@ -80,10 +80,14 @@ function removeSilenceIndicator(playlist) {
 Hooks.once('init', () => {
   logModuleHeader();
 
-  // Wrap Playlist.prototype._onSoundEnd to add silence between tracks
-  const originalOnSoundEnd = Playlist.prototype._onSoundEnd;
-  Playlist.prototype._onSoundEnd = async function(sound) {
-    const MODES = CONST.PLAYLIST_MODES;
+  // Resolve the Playlist document class via CONFIG (v14-safe; the bare global
+  // may be removed or shimmed in future Foundry releases).
+  const PlaylistClass = CONFIG.Playlist?.documentClass ?? globalThis.Playlist;
+
+  // Wrap PlaylistClass.prototype._onSoundEnd to add silence between tracks
+  const originalOnSoundEnd = PlaylistClass.prototype._onSoundEnd;
+  PlaylistClass.prototype._onSoundEnd = async function(sound) {
+    const MODES = foundry.CONST?.PLAYLIST_MODES ?? CONST.PLAYLIST_MODES;
 
     // Only intercept Sequential and Shuffle modes
     if (this.mode !== MODES.SEQUENTIAL && this.mode !== MODES.SHUFFLE) {
@@ -160,8 +164,8 @@ Hooks.once('init', () => {
   };
 
   // Wrap stopAll to cancel pending silence timeout
-  const originalStopAll = Playlist.prototype.stopAll;
-  Playlist.prototype.stopAll = async function() {
+  const originalStopAll = PlaylistClass.prototype.stopAll;
+  PlaylistClass.prototype.stopAll = async function() {
     if (this._dlSilenceTimeout) {
       clearTimeout(this._dlSilenceTimeout);
       delete this._dlSilenceTimeout;
@@ -173,8 +177,8 @@ Hooks.once('init', () => {
   };
 
   // Wrap playSound to cancel pending silence timeout on manual track selection
-  const originalPlaySound = Playlist.prototype.playSound;
-  Playlist.prototype.playSound = async function(sound) {
+  const originalPlaySound = PlaylistClass.prototype.playSound;
+  PlaylistClass.prototype.playSound = async function(sound) {
     if (this._dlSilenceTimeout) {
       clearTimeout(this._dlSilenceTimeout);
       delete this._dlSilenceTimeout;
