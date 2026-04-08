@@ -106,7 +106,7 @@ Hooks.once('init', () => {
         content: '<p>Open the Patreon page in a new tab.</p>',
         ok: {
           label: '<i class="fab fa-patreon"></i> Visit Patreon',
-          callback: () => window.open('https://patreon.com/jesshmusic', '_blank', 'noopener,noreferrer')
+          callback: () => window.open('https://www.patreon.com/c/DormanLakely', '_blank', 'noopener,noreferrer')
         }
       });
       this.close();
@@ -340,10 +340,14 @@ Hooks.on('renderPlaylistConfig', (app, element, context, options) => {
   // Inject a subtle Dungeon Master Guru cross-promotion link at the bottom of
   // the form. No custom styling — this module doesn't own the PlaylistConfig
   // window, so the link inherits the host window's text styles.
+  //
+  // PlaylistConfig can re-render (e.g. after updates), so guard the insertion
+  // with a wrapper class and bail out if a previous render already added it.
   const form = element.querySelector('form') ?? element;
+  if (form.querySelector('.dlpe-dmguru-promo')) return;
   const footer = form.querySelector('footer') ?? form.querySelector('.form-footer');
   const dmguruHtml = `
-    <p class="notes">
+    <p class="notes dlpe-dmguru-promo">
       More DM tools and SRD rules at
       <a href="https://dungeonmaster.guru" target="_blank" rel="noopener noreferrer">dungeonmaster.guru</a>
     </p>`;
