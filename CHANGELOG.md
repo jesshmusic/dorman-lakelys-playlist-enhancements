@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2026-04-08
+
+### Added
+
+- Subtle `dungeonmaster.guru` cross-promotion link injected at the bottom of the PlaylistConfig form. Plain unstyled link — inherits PlaylistConfig's text styles so it doesn't clash with the host window.
+
 ## [1.0.2] - 2026-04-06
 
 ### Changed
