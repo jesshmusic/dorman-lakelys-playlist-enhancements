@@ -1,6 +1,6 @@
 {
   "name": "dorman-lakelys-playlist-enhancements",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "FoundryVTT module that adds configurable silence between playlist tracks",
   "main": "scripts/module.js",
   "scripts": {

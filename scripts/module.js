@@ -255,4 +255,20 @@ Hooks.on('renderPlaylistConfig', (app, element, context, options) => {
       minInput.value = maxVal;
     }
   });
+
+  // Inject a subtle Dungeon Master Guru cross-promotion link at the bottom of
+  // the form. No custom styling — this module doesn't own the PlaylistConfig
+  // window, so the link inherits the host window's text styles.
+  const form = element.querySelector('form') ?? element;
+  const footer = form.querySelector('footer') ?? form.querySelector('.form-footer');
+  const dmguruHtml = `
+    <p class="notes">
+      More DM tools and SRD rules at
+      <a href="https://dungeonmaster.guru" target="_blank" rel="noopener noreferrer">dungeonmaster.guru</a>
+    </p>`;
+  if (footer) {
+    footer.insertAdjacentHTML('beforebegin', dmguruHtml);
+  } else {
+    form.insertAdjacentHTML('beforeend', dmguruHtml);
+  }
 });
