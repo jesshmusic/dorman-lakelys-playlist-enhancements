@@ -80,6 +80,87 @@ function removeSilenceIndicator(playlist) {
 Hooks.once('init', () => {
   logModuleHeader();
 
+  const { ApplicationV2, DialogV2 } = foundry.applications.api;
+
+  class PatreonLink extends ApplicationV2 {
+    static DEFAULT_OPTIONS = {
+      id: 'dlpe-patreon-link',
+      window: {
+        title: 'Support on Patreon',
+        icon: 'fab fa-patreon'
+      }
+    };
+
+    async _renderHTML() {
+      return document.createElement('div');
+    }
+
+    _replaceHTML(result, content) {
+      content.replaceChildren(result);
+    }
+
+    async _onFirstRender(context, options) {
+      this.element.style.display = 'none';
+      await DialogV2.prompt({
+        window: { title: 'Support on Patreon' },
+        content: '<p>Open the Patreon page in a new tab.</p>',
+        ok: {
+          label: '<i class="fab fa-patreon"></i> Visit Patreon',
+          callback: () => window.open('https://patreon.com/jesshmusic', '_blank', 'noopener,noreferrer')
+        }
+      });
+      this.close();
+    }
+  }
+
+  class DmGuruLink extends ApplicationV2 {
+    static DEFAULT_OPTIONS = {
+      id: 'dlpe-dmguru-link',
+      window: {
+        title: 'Dungeon Master Guru',
+        icon: 'fas fa-dragon'
+      }
+    };
+
+    async _renderHTML() {
+      return document.createElement('div');
+    }
+
+    _replaceHTML(result, content) {
+      content.replaceChildren(result);
+    }
+
+    async _onFirstRender(context, options) {
+      this.element.style.display = 'none';
+      await DialogV2.prompt({
+        window: { title: 'Dungeon Master Guru' },
+        content: '<p>Open the Dungeon Master Guru site in a new tab.</p>',
+        ok: {
+          label: '<i class="fas fa-dragon"></i> Visit Dungeon Master Guru',
+          callback: () => window.open('https://dungeonmaster.guru', '_blank', 'noopener,noreferrer')
+        }
+      });
+      this.close();
+    }
+  }
+
+  game.settings.registerMenu(MODULE_ID, 'patreonLink', {
+    name: 'Support on Patreon',
+    label: 'Visit Patreon',
+    hint: 'Support the development of this module on Patreon! Your contributions help fund new features and updates.',
+    icon: 'fab fa-patreon',
+    type: PatreonLink,
+    restricted: true
+  });
+  game.settings.registerMenu(MODULE_ID, 'dmGuruLink', {
+    name: 'Dungeon Master Guru',
+    label: 'Visit Dungeon Master Guru',
+    hint: 'SRD rules and DM tools. Free resources for Dungeon Masters at dungeonmaster.guru.',
+    icon: 'fas fa-dragon',
+    type: DmGuruLink,
+    restricted: true
+  });
+
   // Resolve the Playlist document class via CONFIG (v14-safe; the bare global
   // may be removed or shimmed in future Foundry releases).
   const PlaylistClass = CONFIG.Playlist?.documentClass ?? globalThis.Playlist;
